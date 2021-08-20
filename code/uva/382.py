@@ -1,23 +1,25 @@
 def printresult(n):
-    if n==1:
-        print((5-len(str(n)))*" "+str(n)+"  DEFICIENT")
-        return
-    divisors = {1}
-    for i in range(2,n//2 +1):
+    sum = 0
+    for i in range(1,n//2+1):
         if(n%i==0):
-            divisors.add(i)
-    if(sum(divisors)==n):
+            sum+=i
+    if(sum==n):
         print((5-len(str(n)))*" "+str(n)+"  PERFECT")
-    elif(sum(divisors)<n):
+    elif(sum<n):
         print((5-len(str(n)))*" "+str(n)+"  DEFICIENT")
     else:
         print((5-len(str(n)))*" "+str(n)+"  ABUNDANT")
 
-
-line = list(map(int,input().split()))
+done = False
 print("PERFECTION OUTPUT")
-for num in line:
-    if num==0:
-        print("END OF OUTPUT")
-        break
-    printresult(num)
+while True:
+	line = list(map(int,input().split()))
+	for num in line:
+		if num==0:
+			done = True
+			break
+		else:
+			printresult(num)
+	if done:
+		break
+print("END OF OUTPUT")
